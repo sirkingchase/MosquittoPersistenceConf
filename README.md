@@ -1,2 +1,3 @@
 # MosquittoPersistenceConf
 This contains a configuration that persists messages.
+Mosquitto's persistence capability works as described for QOS 1 & 2 Messages (ex: honors max_queued_messages).  However what I have found that the setting for QOS 0 messages does not.  With queue_qos0_message enabled it would cache only 5 hours of messages which I think is about 1000 messages, however QOS 1 & 2 Messages would continue to queue.  After adding the setting 'persistence true', it appears to be queing all QOS 0 messages the same way as 1 & 2 so I think that configuration is needed but is not documented in the manual.  This is using the lastest version of mosquitto version 2.0.18 but I had the same issue with 2.0.12(?) whatever Ubuntu 20.04 stable versions is.
